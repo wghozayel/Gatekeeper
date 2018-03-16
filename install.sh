@@ -135,6 +135,8 @@ cd ./Gatekeeper/
 cp ./confs/dhcpd.conf /etc/dhcp/
 cp ./confs/hostapd.conf /etc/hostapd/
 cp ./confs/interfaces /etc/network/
+mkdir /var/www
+mkdir /var/www/html
 cp -R ./html/* /var/www/html/
 cp ./confs/rctmp.local /etc/rc.local
 cp ./laststep.sh ../
