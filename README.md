@@ -1,4 +1,4 @@
-# Gatekeeper: Long Range RFID Cloning  
+# Gatekeeper: Long Range RFID Stealing and Cloning  
 Gatekeeper is the next step in the evolution of long range RFID thieving. This project builds on several previous projects while adding new features and expanding the possibilities. 
   
 Before going any further, I want to make sure to acknowledge those who helped this project, without knowing they did so. 
