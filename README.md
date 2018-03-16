@@ -2,7 +2,7 @@
 Gatekeeper is the next step in the evolution of long range RFID thieving. This project builds on several previous projects while adding new features and expanding the possibilities. 
   
 Before going any further, I want to make sure to acknowledge those who helped this project, without knowing they did so. 
-1. Mike Kelly for the Wiegotcha code. 
+1. Mike Kelly for the Wiegotcha code (https://github.com/lixmk/Wiegotcha). 
 2. Fran Brown and BishopFox for the original Tastic RFID Thief (https://www.bishopfox.com/resources/tools/rfid-hacking/attack-tools/). Much of the original Arduino code was ported over into gatekeeper.c.  
 3. pidoorman RPi wiegand reader code (http://pidoorman.co.uk/).  
 4. Kyle Mallory for his fork of the above pidoorman code (found at https://gist.github.com/hsiboy/9598741).  
