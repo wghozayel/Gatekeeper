@@ -13,22 +13,23 @@ function init_table(options) {
       var csv_data = $.csv.toArrays(data, csv_options);
 
       var table_head = "<thead><tr>";
-
+      table_head += "<th>Clone</th>";
       for (head_id = 0; head_id < csv_data[0].length; head_id++) { 
         table_head += "<th>" + csv_data[0][head_id] + "</th>";
       }
 
-      table_head += "<th>Clone</th></tr></thead>";
+      table_head += "</tr></thead>";
       $('#my-table').append(table_head);
       $('#my-table').append("<tbody></tbody>");
 
       for (row_id = 1; row_id < csv_data.length; row_id++) { 
         var row_html = "<tr>";
 
+        row_html += "<td><a class='btn btn-info' href='/?id=" +csv_data[row_id][1] + "'>Clone</a></td>";
           for (col_id = 0; col_id < csv_data[row_id].length; col_id++) { 
             row_html += "<td>" + csv_data[row_id][col_id] + "</td>";
           }
-        row_html += "<td><a class='btn btn-info' href='/?id=" +csv_data[row_id][4] + "'>Clone</a></td></tr>";
+        row_html += "</tr>";
         $('#my-table tbody').append(row_html);
       }
 

@@ -1,0 +1,23 @@
+spawn /root/proxmark3/client/proxmark3 /dev/ttyACM0
+Prox/RFID mark3 RFID instrument          
+bootrom: master/v2.2 2015-07-31 11:28:11
+os: master/v3.0.1-131-g75e42ef-suspect 2017-11-05 15:09:16
+LF FPGA image built for 2s30vq100 on 2015/03/06 at 07:38:04
+HF FPGA image built for 2s30vq100 on 2017/09/05 at 08:50:16
+          
+uC: AT91SAM7S512 Rev B          
+Embedded Processor: ARM7TDMI          
+Nonvolatile Program Memory Size: 512K bytes. Used: 199591 bytes (38%). Free: 324697 bytes (62%).          
+Second Nonvolatile Program Memory Size: None          
+Internal SRAM Size: 64K bytes          
+Architecture Identifier: AT91SAM7Sxx Series          
+Nonvolatile Program Memory Type: Embedded Flash Memory          
+proxmark3> lf search
+NOTE: some demods output possible binary
+  if it finds something that looks like a tag          
+False Positives ARE possible
+          
+
+Checking for known tags:
+          
+proxmark3> 

@@ -75,7 +75,7 @@ read -e RESP2
 if [ "$RESP2" = "yes" ]
 then
   echo "[*] Modding sshd_config to allow root ssh login."
-  sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+  sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 else
   echo "[*] Root SSH login not permitted."
 fi

@@ -10,7 +10,7 @@ import RPi.GPIO as GPIO
 import os, time, re, sys
 from subprocess import Popen
 import cgi
-
+from urllib import urlencode
 
 # Define server address and port, use localhost if you are running this on your Mattermost server.
 HOSTNAME = '192.168.150.1'
@@ -30,23 +30,56 @@ class PostHandler(BaseHTTPRequestHandler):
         else:
             rpath = self.path
 
-        if 'id' in args:
-            q = Popen(['/usr/bin/expect', '-f' '/root/proxmark3/scan/clone.sh',args['id'][0]],stdout=subprocess.PIPE)
-
         # Get the file path.
-        path = "/var/www/html" + rpath
+        basepath = "/var/www/html/"
+        path = basepath + rpath
         dirpath = None
         # If it is a directory look for index.html
         # or process it directly if there are 3
         # trailing slashed.
         if os.path.exists(path) and os.path.isdir(path):
             dirpath = path  # the directory portion
-            index_files = ['/index.html', '/index.htm', ]
+            index_files = ['index.html', 'index.htm', ]
             for index_file in index_files:
-                tmppath = path + index_file
+                tmppath = basepath + index_file
                 if os.path.exists(tmppath):
                     path = tmppath
                     break
+
+
+        if 'id' in args:
+            hidPattern = re.compile("HID Prox TAG ID:\s([a-z,A-Z,0-9]+)\s\(")
+            indalaPattern = re.compile(" \((.........)\)")
+
+            cloneOut = subprocess.check_output(["/usr/bin/expect", '-f' '/root/proxmark3/scan/clone.sh',args['id'][0]])
+            scanOut = Popen(["/usr/bin/expect", '-f' '/root/proxmark3/scan/scan.sh'],stdout=subprocess.PIPE)
+
+            raw = str(scanOut.communicate()[0])
+            lines = raw.splitlines()
+            tag = None
+
+            for line in lines:
+                hidMatch = re.match(hidPattern, line)
+                indalaMatch = re.match(indalaPattern, line)
+                if hidMatch:
+                    tag = hidMatch.group(1)
+                elif indalaMatch:
+                    tag = indalaMatch.group(1)
+
+            if tag==args['id'][0]:
+                if os.path.exists(basepath + 'success.html'):
+                    self.send_response(302)
+                    self.send_header('Location', 'success.html')
+                    self.end_headers()
+                    return
+            else:
+                if os.path.exists(basepath + 'failure.txt'):
+                    with open(basepath + 'failure.txt', 'w+') as err_file:
+                        err_file.write(raw)
+                    self.send_response(302)
+                    self.send_header('Location', 'failure.txt')
+                    self.end_headers()
+
 
         if os.path.exists(path) and os.path.isfile(path):
             # This is valid file, send it as the response
@@ -75,7 +108,7 @@ class PostHandler(BaseHTTPRequestHandler):
                 self.send_response(200)  # OK
                 if ext in ['.css','.js','.woff2','.ico']:
                     self.send_header('Cache-Control', 'max-age=3110400')
-                    self.send_header('Expires', 'Mon, 13 Aug 2199 15:10:03 GMT')                    
+                    self.send_header('Expires', 'Mon, 13 Aug 2199 15:10:03 GMT')
                 self.send_header('Content-type', content_type[ext])
                 self.end_headers()
                 with open(path) as ifp:
@@ -85,7 +118,7 @@ class PostHandler(BaseHTTPRequestHandler):
             self.send_response(200)  # OK
             self.send_header('Content-type', 'text/html')
             self.end_headers()
-            
+
             self.wfile.write('<html>')
             self.wfile.write('  <head>')
             self.wfile.write('    <title>%s</title>' % (dirpath))

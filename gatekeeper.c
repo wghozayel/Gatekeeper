@@ -503,10 +503,10 @@ void main(void) {
             strftime(buffer, 26, "%m/%d/%Y %H:%M", tm_info);
             FILE *out2 = fopen("/var/www/html/data.csv", "a");
             fprintf(out2, "%s,", buffer);
+            fprintf(out2, "%x%x,", cardChunk1, cardChunk2);
             fprintf(out2, "%d,", bitLen);
             fprintf(out2, "%d,", facilityCode);
             fprintf(out2, "%d,", cardCode);
-            fprintf(out2, "%x%x,", cardChunk1, cardChunk2);
             fprintf(out2, "%010x%06x,", maskMagicChunk1(bitLen, cardChunk1), cardChunk2);
             for (i = 19; i >= 0; i--) {
               fprintf(out2, "%d", bitRead(cardChunk1, i));
@@ -517,10 +517,10 @@ void main(void) {
             fprintf(out2, "\n");
             fclose(out2);
             printf("%s UTC - ", buffer);
+            printf("Hex:%x%x  ", cardChunk1, cardChunk2);
             printf("Bit#:%d  ", bitLen);
             printf("FC:%d  ", facilityCode);
             printf("ID:%d  ", cardCode);
-            printf("Hex:%x%x  ", cardChunk1, cardChunk2);
             printf("Blk7:%010x%06x  ", maskMagicChunk1(bitLen, cardChunk1), cardChunk2);
             printf("Bits: ");
             for (i = 19; i >= 0; i--) {
