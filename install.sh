@@ -134,6 +134,7 @@ cd ~/
 echo "[*] Copying config files"
 cd ./Gatekeeper/
 cp ./confs/dhcpd.conf /etc/dhcp/
+sed -i 's/INTERFACESv4=""/INTERFACESv4="wlan0"/g' /etc/default/isc-dhcp-server
 cp ./confs/hostapd.conf /etc/hostapd/
 cp ./confs/interfaces /etc/network/
 mkdir /var/www
