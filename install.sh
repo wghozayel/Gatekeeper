@@ -99,7 +99,7 @@ echo "[*] Updating raspbian. This could take a while..."
 apt-get update
 apt-get -y dist-upgrade
 apt-get -y install hostapd isc-dhcp-server screen
-apt-get --force-yes -y install expect p7zip build-essential libreadline5 libreadline-dev libusb-0.1-4 libusb-dev libqt4-dev perl pkg-config libncurses5-dev gcc-arm-none-eabi libstdc++-arm-none-eabi-newlib supervisor
+apt-get --force-yes -y install expect p7zip build-essential libreadline5 libreadline-dev libusb-0.1-4 libusb-dev libqt4-dev perl pkg-config libncurses5-dev gcc-arm-none-eabi libstdc++-arm-none-eabi-newlib supervisor ntp
 echo "[*] Updating complete."
 
 #Changing hostname for purely vain reasons
