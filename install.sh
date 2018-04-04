@@ -125,6 +125,7 @@ udevadm control --reload-rules
 make clean && make all
 mkdir scan
 cp ~/Gatekeeper/confs/clone.sh ./scan/
+cp ~/Gatekeeper/confs/scan.sh ./scan/
 cd ~/
 
 

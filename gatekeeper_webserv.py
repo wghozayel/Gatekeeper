@@ -41,7 +41,7 @@ class PostHandler(BaseHTTPRequestHandler):
             dirpath = path  # the directory portion
             index_files = ['index.html', 'index.htm', ]
             for index_file in index_files:
-                tmppath = basepath + index_file
+                tmppath = dirpath + index_file
                 if os.path.exists(tmppath):
                     path = tmppath
                     break
