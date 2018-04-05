@@ -51,7 +51,7 @@ Easy mode installation is the same as installing any OS on your raspberry pi.
 9. Proceed to Hardware Installation.  
   
 ## Hardware Installation
-![Wiring Diagram](https://drive.google.com/file/d/1yu8LFOeut5fmFZEjpC6wAvRoutqETLB7/view?usp=sharing)
+The wiring diagram can be found here: https://drive.google.com/file/d/1yu8LFOeut5fmFZEjpC6wAvRoutqETLB7/view?usp=sharing
 1. Connect the RTC GND pin to the RPi pin 9.
 2. Connect the RTC VCC pin to RPi pin 1.
 3. Connect the RTC SDA pin to RPi pin 3.
