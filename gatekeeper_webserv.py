@@ -181,5 +181,8 @@ class PostHandler(BaseHTTPRequestHandler):
 if __name__ == '__main__':
     server = HTTPServer((HOSTNAME, PORT), PostHandler)
     print('Starting Gatekeeper server, use <Ctrl-C> to stop')
+    #This was because I was seeing cards come in as all 0's until a clone was done.
+    cloneOut = subprocess.check_output(["/usr/bin/expect", '-f' '/root/proxmark3/scan/clone.sh','00'])
+    scanOut = Popen(["/usr/bin/expect", '-f' '/root/proxmark3/scan/scan.sh'],stdout=subprocess.PIPE)
     server.serve_forever()
 
