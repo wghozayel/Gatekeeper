@@ -29,10 +29,10 @@ Access Point:
 ## Code Installation
 ### Easy Mode  
 Easy mode installation is the same as installing any OS on your raspberry pi.  
-1. Download the image from: https://drive.google.com/file/d/1gRQ0itS_2Zorfb1CtqN_J-AB9BlKPw_-/view?usp=sharing
-2. Check .gz sha256 sum: 5bf4432fc03052329c97f73ef2ded0a3bd908484a4ac3087b216b9a2abe2b2e3
+1. Download the image from: https://drive.google.com/file/d/1W9no7L3vCwh-oXbo2HUS9emGDQDJSG3k/view?usp=sharing
+2. Check .gz sha256 sum: ddbe2102381ea1a754adfba664feacb7b19bdb0361bdebbe2803a2782f08ec35
 3. Decompress the image.
-4. Check .img sha256 sum: 9116c6bac390977548415f12c72d258f3aef79e27c9cd9e0bd2017ad973d8d50
+4. Check .img sha256 sum: e4705bb0afd1c9eef081419e479f26f40438b54fc70f20387e71580f2e898b63
 5. Use dd (or Win32 Disk Imager on windows) to push the image to your sd card.
 6. Ensure ethernet cable is connected and boot.
 7. Run `/root/Gatekeeper/fixclock.sh` to set correct time to hardware clock.  
