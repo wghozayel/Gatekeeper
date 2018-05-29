@@ -22,7 +22,7 @@ function init_table(options) {
       $('#my-table').append(table_head);
       $('#my-table').append("<tbody></tbody>");
 
-      for (row_id = 1; row_id < csv_data.length; row_id++) { 
+      for (row_id = csv_data.length-1; row_id > 0; row_id--) { 
         var row_html = "<tr>";
 
         row_html += "<td><a class='btn btn-info' href='/?id=" +csv_data[row_id][1] + "'>Clone</a></td>";
